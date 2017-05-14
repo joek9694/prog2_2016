@@ -8,7 +8,7 @@ import view.MapBackGround;
 
 import java.awt.event.ActionEvent;
 
-public class NewPlaceControl implements ActionListener{
+public class NewPlaceController implements ActionListener{
 	private TestProgramme prog;
 	private JButton b;
 	private JRadioButton [] rbs;
@@ -16,7 +16,7 @@ public class NewPlaceControl implements ActionListener{
 	private JList<String> sideBar;
 
 	
-	public NewPlaceControl(JButton b, JRadioButton[] rbs, TestProgramme prog, MapBackGround map){
+	public NewPlaceController(JButton b, JRadioButton[] rbs, TestProgramme prog, MapBackGround map){
 		this.b = b;
 		this.rbs = rbs;
 		this.prog = prog;

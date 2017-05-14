@@ -11,12 +11,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import view.MainView;
 import view.MapBackGround;
 
-public class NewMapControl implements ActionListener {
+public class NewMapController implements ActionListener {
 	private JMenuItem newMap;
 	private MapBackGround mapBackGround;
 	private JScrollPane mapScroll;
 	
-	public NewMapControl(JMenuItem newMap, MapBackGround mapBackGround){
+	public NewMapController(JMenuItem newMap, MapBackGround mapBackGround){
 		this.newMap = newMap;
 		this.mapBackGround = mapBackGround;
 	}

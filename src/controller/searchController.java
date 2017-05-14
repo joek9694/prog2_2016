@@ -8,12 +8,12 @@ import javax.swing.JTextField;
 
 import model.TestProgramme;
 
-public class searchController implements ActionListener {
+public class SearchController implements ActionListener {
 	private JButton search;
 	private JTextField searchBar;
 	private TestProgramme prog;
 	
-	public searchController(JButton search, JTextField searchBar, TestProgramme prog){
+	public SearchController(JButton search, JTextField searchBar, TestProgramme prog){
 		this.search = search;
 		this.searchBar = searchBar;
 		this.prog = prog;

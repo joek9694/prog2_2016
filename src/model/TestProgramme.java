@@ -7,11 +7,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import view.MainView;
+import view.PlaceImage;
 
 public class TestProgramme {
 	
 	private MainView startView;
-	private ArrayList<Place> places = new ArrayList<>();			//temporär
+	public ArrayList<Place> places = new ArrayList<>();			//temporär
 	private HashMap<PlaceCategory, ArrayList<Place>> placesByCat = new HashMap<>();
 	private HashMap<String, LinkedList<Place>> placesByName = new HashMap<>();
 	private HashSet<Place> markedSet = new HashSet<>();
@@ -30,6 +31,29 @@ public class TestProgramme {
 		addToCategory(p);
 		addToByName(p);
 		places.add(p);		//temporär
+	}
+	
+	public LinkedList<PlaceImage> removeAllMarked(){
+		Iterator<Place> markedIterator = markedSet.iterator();
+		LinkedList<PlaceImage> visuals = new LinkedList<>();
+		
+		while(markedIterator.hasNext()){
+			Place p = markedIterator.next();
+			visuals.add(p.getVisual());
+			ArrayList<Place> catList = placesByCat.get(p.getPlaceCategory());
+			LinkedList<Place> namedList = placesByName.get(p.getName());
+			
+			places.remove(p);
+			catList.remove(p);
+			
+			namedList.remove(p);
+			if(namedList.isEmpty()){
+				placesByName.remove(namedList);
+			}
+			
+			markedIterator.remove();
+		}
+		return visuals;
 	}
 	
 	private void addToByName(Place p) {

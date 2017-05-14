@@ -9,10 +9,10 @@ import javax.swing.*;
 public class MainView extends JFrame {
 	private TestProgramme programme;
 	private JMenu archive;
-	private JButton newPlaceB, hideCategory, hide, search;
+	private JButton newPlaceB, hideCategory, hide, search, remove;
 	private MapBackGround mapBackGround;
 	private JList<String> sideBar;
-	private NewPlaceControl newPlaceController;
+	private NewPlaceController newPlaceController;
 	
 	public MainView(TestProgramme programme){
 		super("Inlupp 2");
@@ -63,7 +63,7 @@ public class MainView extends JFrame {
 		archive = new JMenu("Archive");
 		JMenuItem newMap, loadPlaces, save, exit;
 		newMap = new JMenuItem("New Map");
-		newMap.addActionListener(new NewMapControl(newMap, mapBackGround));
+		newMap.addActionListener(new NewMapController(newMap, mapBackGround));
 		loadPlaces = new JMenuItem("Load Places");
 		save = new JMenuItem("Save");
 		exit = new JMenuItem("Exit");
@@ -90,7 +90,7 @@ public class MainView extends JFrame {
 		north.setLayout(new FlowLayout());
 		newPlaceB = new JButton("New");
 		north.add(newPlaceB);
-		newPlaceController = new NewPlaceControl(newPlaceB, rbArr, programme, mapBackGround);
+		newPlaceController = new NewPlaceController(newPlaceB, rbArr, programme, mapBackGround);
 		newPlaceB.addActionListener(newPlaceController);
 		
 		rb.add(named);
@@ -104,12 +104,14 @@ public class MainView extends JFrame {
 		north.add(searchBar);
 		
 		search = new JButton("Search");
-		search.addActionListener(new searchController(search, searchBar, programme));
+		search.addActionListener(new SearchController(search, searchBar, programme));
 		north.add(search);
 		hide = new JButton("Hide");
 		hide.addActionListener(new HideMarkedController(hide, programme));
 		north.add(hide);
-		north.add(new JButton("Remove"));
+		remove = new JButton("Remove");
+		remove.addActionListener(new RemoveMarkedController(remove, programme, mapBackGround));
+		north.add(remove);
 		north.add(new JButton("Coordinates"));
 		
 		add(north, BorderLayout.NORTH);
