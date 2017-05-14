@@ -4,7 +4,12 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import model.DescribedPlace;
 import model.NamedPlace;
@@ -61,31 +66,64 @@ public class CenterMouse extends MouseAdapter{
 				if (rb.isSelected())
 					selected = rb;
 			}
-	
+			
+			String name;
+			
 			if (selected.getText().equals("Named")) { // temporärt fungerande. Lägg till klick på kartan för koordinater.
-	
-				NamedPlace newPlace = new NamedPlace(p , "Named", category);
-				PlaceController placeControl = new PlaceController(newPlace, map, prog);
-				newPlace.getVisual().addMouseListener(placeControl);
-				prog.addPlace(newPlace);
-				PlaceImage place = newPlace.getVisual();
-				map.add(place);
-				map.validate();
-				map.repaint();
 				
-				System.out.println(newPlace);
+				name = JOptionPane.showInputDialog("Ange namn: ");
+				
+				if(name != null && !name.equals("")){
+					NamedPlace newPlace = new NamedPlace(p , name, category);
+					PlaceController placeControl = new PlaceController(newPlace, map, prog);
+					newPlace.getVisual().addMouseListener(placeControl);
+					prog.addPlace(newPlace);
+					PlaceImage place = newPlace.getVisual();
+					map.add(place);
+					map.validate();
+					map.repaint();
+					
+					System.out.println(newPlace);
+				}
+				
 				
 			}else if (selected.getText().equals("Described")){
-				DescribedPlace newPlace = new DescribedPlace(p , "Described", category, "Värsta beskrivningen");
-				PlaceController placeControl = new PlaceController(newPlace, map, prog);
-				newPlace.getVisual().addMouseListener(placeControl);
-				prog.addPlace(newPlace);
-				PlaceImage place = newPlace.getVisual();
-				map.add(place);
-				map.validate();
-				map.repaint();
+				name = "";
+				JPanel container = new JPanel();
+				container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+				JPanel firstRow = new JPanel();
+				JPanel secondRow = new JPanel();
 				
-				System.out.println(newPlace);
+				JLabel placeName = new JLabel("name: ");
+				JTextField placeNameField = new JTextField(10);
+				firstRow.add(placeName);
+				firstRow.add(placeNameField);
+				
+				JLabel placeDescription = new JLabel("description: ");
+				JTextField placeDescriptionField = new JTextField(10);
+				secondRow.add(placeDescription);
+				secondRow.add(placeDescriptionField);
+				
+				container.add(firstRow);
+				container.add(secondRow);
+				JOptionPane.showMessageDialog(null, container);
+				
+				name = placeNameField.getText();
+				String description = placeDescriptionField.getText();
+				
+				if((name != null && !name.equals("")) && (description != null && !description.equals(""))){
+					DescribedPlace newPlace = new DescribedPlace(p , name, category, description);
+					PlaceController placeControl = new PlaceController(newPlace, map, prog);
+					newPlace.getVisual().addMouseListener(placeControl);
+					prog.addPlace(newPlace);
+					PlaceImage place = newPlace.getVisual();
+					map.add(place);
+					map.validate();
+					map.repaint();
+					
+					System.out.println(newPlace);
+				}
+				
 			}
 		}
 		map.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));

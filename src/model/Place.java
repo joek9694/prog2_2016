@@ -56,6 +56,7 @@ public abstract class Place {
 	
 	public void setIsMarked(){
 		marked = !marked;
+		visual.repaint();
 		System.out.println("marked? : " +this);			//temp
 	}
 	

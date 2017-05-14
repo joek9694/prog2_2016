@@ -9,7 +9,7 @@ import javax.swing.*;
 public class MainView extends JFrame {
 	private TestProgramme programme;
 	private JMenu archive;
-	private JButton newPlaceB, hideCategory, hide;
+	private JButton newPlaceB, hideCategory, hide, search;
 	private MapBackGround mapBackGround;
 	private JList<String> sideBar;
 	private NewPlaceControl newPlaceController;
@@ -100,10 +100,12 @@ public class MainView extends JFrame {
 		radioButtons.setLayout(new GridLayout(2,1));
 		north.add(radioButtons);
 		
-		JTextField searchbar = new JTextField("search", 10);
-		north.add(searchbar);
+		JTextField searchBar = new JTextField("search", 10);
+		north.add(searchBar);
 		
-		north.add(new JButton("Search"));
+		search = new JButton("Search");
+		search.addActionListener(new searchController(search, searchBar, programme));
+		north.add(search);
 		hide = new JButton("Hide");
 		hide.addActionListener(new HideMarkedController(hide, programme));
 		north.add(hide);
