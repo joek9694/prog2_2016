@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -28,6 +29,14 @@ public class LoadPlacesController implements ActionListener {
 	private TestProgramme prog;
 	private MapBackGround map;
 	
+	private PlaceCategory cat;
+	private Position pos;
+	private String name;
+	private Place p;
+	private String subType;
+	
+	private JFileChooser jfc;
+	
 	public LoadPlacesController(JMenuItem loadPlaces, TestProgramme prog, MapBackGround map){
 		this.loadPlaces = loadPlaces;
 		this.prog = prog;
@@ -36,60 +45,72 @@ public class LoadPlacesController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ave) {
-		PlaceCategory cat;
-		Position pos;
-		String name;
-		Place p;
-		String subType;
 		
 		if(ave.getSource() == loadPlaces){
-			JFileChooser jfc = new JFileChooser(".");
-			int svar = jfc.showOpenDialog(null);
+			jfc = new JFileChooser(".");
+			int response = jfc.showOpenDialog(null);
 			
-			if(svar == jfc.APPROVE_OPTION){
+			if(response == jfc.APPROVE_OPTION){
 				
-				try{
-					FileReader in = new FileReader(jfc.getSelectedFile());
-					BufferedReader br = new BufferedReader(in);
-					String readLine;
-					while((readLine = br.readLine()) != null){
-						String[] tokens = readLine.split(",");
-						subType = tokens[0];
-						cat = PlaceCategory.valueOf(tokens[1].toUpperCase());
-						pos = new Position(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]));
-						name = tokens[4];
+				if(prog.hasUnSavedChanges()){
+					int confirmed = JOptionPane.showConfirmDialog(map, "There are unsaved changes, click Yes to proceed.",
+							"Unsaved changes", JOptionPane.YES_NO_CANCEL_OPTION);
+					if(confirmed == JOptionPane.YES_OPTION){
 						
-						switch(subType){
-							case "description": 
-								String description = tokens[5];
-								p = new DescribedPlace(pos, name, cat, description);
-								break;
-							default :
-								p = new NamedPlace(pos, name, cat);
-								break;
-								
-						}
-						
-						prog.addPlace(p);
-						PlaceImage place = p.getVisual();
-						PlaceController placeControl = new PlaceController(p, map, prog);
-						place.addMouseListener(placeControl);
-						map.add(place);
-						
-						// add place
+						tryLoad();
 					}
-				}catch(FileNotFoundException e){
-					
-				}catch(IOException e){
-					
+				}else{
+					tryLoad();
 				}
-				map.validate();
-				map.repaint();
 			}
-			
-			
 		}
-		
+	}
+	
+	private void tryLoad(){
+		try{
+			FileReader in = new FileReader(jfc.getSelectedFile());
+			BufferedReader br = new BufferedReader(in);
+			String readLine;
+			
+			if(!prog.places.isEmpty())
+				prog.removeAll();
+			
+			while((readLine = br.readLine()) != null){
+				String[] tokens = readLine.split(",");
+				subType = tokens[0];
+				cat = PlaceCategory.valueOf(tokens[1].toUpperCase());
+				pos = new Position(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]));
+				name = tokens[4];
+				
+				switch(subType){
+					case "Described": 
+						String description = tokens[5];
+						p = new DescribedPlace(pos, name, cat, "Described", description);
+						break;
+					default :
+						p = new NamedPlace(pos, name, cat, "Named");
+						break;
+						
+				}
+				
+				prog.addPlace(p);
+				PlaceImage place = p.getVisual();
+				PlaceController placeControl = new PlaceController(p, map, prog);
+				place.addMouseListener(placeControl);
+				map.add(place);
+				
+			}
+		}catch(FileNotFoundException e){
+			
+			//FIXME
+			
+		}catch(IOException e){
+			
+			//FIXME
+		}
+		prog.unSavedChange();
+		map.validate();
+		map.repaint();
 	}
 
 }

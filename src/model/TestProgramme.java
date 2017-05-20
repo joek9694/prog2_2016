@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 
 import view.MainView;
 import view.PlaceImage;
@@ -16,6 +17,7 @@ public class TestProgramme {
 	private HashMap<PlaceCategory, ArrayList<Place>> placesByCat = new HashMap<>();
 	private HashMap<String, LinkedList<Place>> placesByName = new HashMap<>();
 	private HashSet<Place> markedSet = new HashSet<>();
+	private boolean unSavedChanges = false;
 	
 	private TestProgramme (){
 		createListsForCategories();
@@ -25,6 +27,18 @@ public class TestProgramme {
 	public static void main(String[] args) {
 		TestProgramme programme = new TestProgramme();
 		programme.startView = new MainView(programme);
+	}
+	
+	public boolean hasUnSavedChanges(){
+		return unSavedChanges;
+	}
+	
+	public void unSavedChange(){
+		unSavedChanges = true;
+	}
+	
+	public void noUnsavedChanges(){
+		unSavedChanges = false;
 	}
 	
 	public void addPlace(Place p){
@@ -153,6 +167,24 @@ public class TestProgramme {
 		p.setIsMarked();
 		markedSet.add(p);
 		
+	}
+
+	public ArrayList<String> placesAsSave() {
+		ArrayList<String> placesStringList = new ArrayList<>();
+		
+		 for(Place p :places.values()){
+			 placesStringList.add(p.toString());
+		 }
+		
+		return placesStringList;
+	}
+	
+	public void removeAll(){
+		for(Place p :places.values()){
+			addToMarked(p);
+		 }
+		
+		removeAllMarked();
 	}
 	
 }

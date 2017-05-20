@@ -4,12 +4,11 @@ import view.PlaceImage;
 
 public class NamedPlace extends Place{
 	
-//	public NamedPlace(Position pos, String name){
-//		super(pos, name);
-//	}
+	String subType;
 	
-	public NamedPlace(Position pos, String name, PlaceCategory category){
-		super(pos, name, category);
+	public NamedPlace(Position pos, String name, PlaceCategory category, String subType){
+		super(pos, name, category, subType);
+		
 		
 	}
 
@@ -17,6 +16,5 @@ public class NamedPlace extends Place{
 	public String getSpecifics() {
 		return "";
 	}
-	
 
 }

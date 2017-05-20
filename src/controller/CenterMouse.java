@@ -74,12 +74,15 @@ public class CenterMouse extends MouseAdapter{
 				name = JOptionPane.showInputDialog("Ange namn: ");
 				
 				if(name != null && !name.equals("")){
-					NamedPlace newPlace = new NamedPlace(p , name, category);
+					NamedPlace newPlace = new NamedPlace(p , name, category, "Named");
 					PlaceController placeControl = new PlaceController(newPlace, map, prog);
 					newPlace.getVisual().addMouseListener(placeControl);
 					prog.addPlace(newPlace);
 					PlaceImage place = newPlace.getVisual();
 					map.add(place);
+					
+					prog.unSavedChange();
+					
 					map.validate();
 					map.repaint();
 					
@@ -112,12 +115,15 @@ public class CenterMouse extends MouseAdapter{
 				String description = placeDescriptionField.getText();
 				
 				if((name != null && !name.equals("")) && (description != null && !description.equals(""))){
-					DescribedPlace newPlace = new DescribedPlace(p , name, category, description);
+					DescribedPlace newPlace = new DescribedPlace(p , name, category,"Described" ,description);
 					PlaceController placeControl = new PlaceController(newPlace, map, prog);
 					newPlace.getVisual().addMouseListener(placeControl);
 					prog.addPlace(newPlace);
 					PlaceImage place = newPlace.getVisual();
 					map.add(place);
+					
+					prog.unSavedChange();
+					
 					map.validate();
 					map.repaint();
 					

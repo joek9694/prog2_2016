@@ -8,6 +8,7 @@ public abstract class Place {
 	private String name;
 	private PlaceImage visual;
 	private boolean marked = false;
+	private String subType;
 	
 //	public Place(Position pos, String name){
 //		this.pos = pos;
@@ -16,10 +17,11 @@ public abstract class Place {
 //		visual = new PlaceImage(pos.getX(), pos.getY(), this);
 //	}
 	
-	public Place(Position pos, String name, PlaceCategory category){
+	public Place(Position pos, String name, PlaceCategory category, String subType){
 		this.pos = pos;
 		this.name = name;
 		this.category = category;
+		this.subType = subType;
 		visual = new PlaceImage(pos.getX(), pos.getY(), this);
 	}
 	
@@ -39,7 +41,9 @@ public abstract class Place {
 		if(spec != ""){
 			spec = "," +spec;
 		}
-		return "" + pos + "," + name +","+ category + spec +","+ marked;
+		//type,category,X,Y,Name,getSpecifics();
+		
+		return subType +"," + category +"," +pos.getX() + "," + pos.getY()+ ","+ name + spec;
 	}
 	
 	public PlaceImage getVisual(){

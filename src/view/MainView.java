@@ -29,7 +29,7 @@ public class MainView extends JFrame {
 		createEast();
 		
 //		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);		// kolla först prog.getUnsavedChanges()
 		setLocation(500, 200);
 		setSize(900, 700);
 		setVisible(true);
@@ -67,7 +67,9 @@ public class MainView extends JFrame {
 		loadPlaces = new JMenuItem("Load Places");
 		loadPlaces.addActionListener(new LoadPlacesController(loadPlaces, programme, mapBackGround));
 		save = new JMenuItem("Save");
+		save.addActionListener(new SaveController(save, programme, mapBackGround));
 		exit = new JMenuItem("Exit");
+		exit.addActionListener(new ExitController(exit, programme, mapBackGround));
 		archive.add(newMap);
 		archive.add(loadPlaces);
 		archive.add(save);
