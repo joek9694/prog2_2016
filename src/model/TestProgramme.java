@@ -12,7 +12,7 @@ import view.PlaceImage;
 public class TestProgramme {
 	
 	private MainView startView;
-	public ArrayList<Place> places = new ArrayList<>();			//temporär
+	public HashMap<Position ,Place> places = new HashMap<>();
 	private HashMap<PlaceCategory, ArrayList<Place>> placesByCat = new HashMap<>();
 	private HashMap<String, LinkedList<Place>> placesByName = new HashMap<>();
 	private HashSet<Place> markedSet = new HashSet<>();
@@ -30,7 +30,11 @@ public class TestProgramme {
 	public void addPlace(Place p){
 		addToCategory(p);
 		addToByName(p);
-		places.add(p);		//temporär
+		places.put(p.getPos(), p);	
+//		for(Position pos : places.keySet()){			// TEMP
+//			System.out.println("THE POS: " + pos);
+//		}
+		
 	}
 	
 	public LinkedList<PlaceImage> removeAllMarked(){
@@ -43,7 +47,7 @@ public class TestProgramme {
 			ArrayList<Place> catList = placesByCat.get(p.getPlaceCategory());
 			LinkedList<Place> namedList = placesByName.get(p.getName());
 			
-			places.remove(p);
+			places.remove(p.getPos());
 			catList.remove(p);
 			
 			namedList.remove(p);
@@ -76,7 +80,7 @@ public class TestProgramme {
 	}
 	
 	private void createListsForCategories() {
-		PlaceCategory [] cats =PlaceCategory.values();
+		PlaceCategory [] cats = PlaceCategory.values();
 		for(PlaceCategory p : cats){
 			ArrayList<Place> temp = new ArrayList<>();
 			placesByCat.put(p, temp);
@@ -93,9 +97,9 @@ public class TestProgramme {
 	}
 
 	public void showAllOfCat(PlaceCategory cat) {
-		ArrayList<Place> places = placesByCat.get(cat);
+		ArrayList<Place> placeList = placesByCat.get(cat);
 		
-		for(Place p : places){
+		for(Place p : placeList){
 			p.getVisual().setVisible(true);
 		}
 	}
@@ -140,6 +144,14 @@ public class TestProgramme {
 			markedIterator.remove();
 		}
 		
+		
+	}
+
+	public void showPlaceByPos(Position pos) {
+		Place p = places.get(pos);
+		p.getVisual().setVisible(true);
+		p.setIsMarked();
+		markedSet.add(p);
 		
 	}
 	

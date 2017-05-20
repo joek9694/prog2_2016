@@ -9,7 +9,7 @@ import javax.swing.*;
 public class MainView extends JFrame {
 	private TestProgramme programme;
 	private JMenu archive;
-	private JButton newPlaceB, hideCategory, hide, search, remove;
+	private JButton newPlaceB, hideCategory, hide, search, remove, coordinates;
 	private MapBackGround mapBackGround;
 	private JList<String> sideBar;
 	private NewPlaceController newPlaceController;
@@ -65,6 +65,7 @@ public class MainView extends JFrame {
 		newMap = new JMenuItem("New Map");
 		newMap.addActionListener(new NewMapController(newMap, mapBackGround));
 		loadPlaces = new JMenuItem("Load Places");
+		loadPlaces.addActionListener(new LoadPlacesController(loadPlaces, programme, mapBackGround));
 		save = new JMenuItem("Save");
 		exit = new JMenuItem("Exit");
 		archive.add(newMap);
@@ -112,7 +113,9 @@ public class MainView extends JFrame {
 		remove = new JButton("Remove");
 		remove.addActionListener(new RemoveMarkedController(remove, programme, mapBackGround));
 		north.add(remove);
-		north.add(new JButton("Coordinates"));
+		coordinates = new JButton("Coordinates");
+		coordinates.addActionListener(new CoordinatesController(coordinates, programme, mapBackGround));
+		north.add(coordinates);
 		
 		add(north, BorderLayout.NORTH);
 	}

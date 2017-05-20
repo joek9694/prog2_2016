@@ -4,7 +4,6 @@ public class Position {
 	private int x;
 	private int y;
 	
-	//förbered för att agera som hashnyckel
 	public Position (int x, int y){
 		this.x = x;
 		this.y = y;
@@ -20,5 +19,19 @@ public class Position {
 	
 	public int getY(){
 		return y;
+	}
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Position){
+			Position o2 = (Position)o;
+			return this.x == o2.x && this.y == o2.y;
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode(){
+		
+		return x < y ? y * y + x : x * x + x + y;
 	}
 }

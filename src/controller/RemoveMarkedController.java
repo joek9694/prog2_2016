@@ -35,9 +35,9 @@ public class RemoveMarkedController implements ActionListener {
 			map.validate();
 			map.repaint();
 		}
-		for(Place p : prog.places){			//temp (har bara kollat denna lista)-----tabort!
-			System.out.println(p);
-		}
+//		for(Place p : prog.places){			//temp (har bara kollat denna lista)-----tabort! är nu en map!
+//			System.out.println(p);
+//		}
 		
 	}
 
