@@ -12,8 +12,8 @@ public class SearchController implements ActionListener {
 	private JButton search;
 	private JTextField searchBar;
 	private TestProgramme prog;
-	
-	public SearchController(JButton search, JTextField searchBar, TestProgramme prog){
+
+	public SearchController(JButton search, JTextField searchBar, TestProgramme prog) {
 		this.search = search;
 		this.searchBar = searchBar;
 		this.prog = prog;
@@ -21,13 +21,13 @@ public class SearchController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ave) {
-		
-		if(ave.getSource() == search && !searchBar.getText().equals("search")){
-			
+
+		if (ave.getSource() == search && !searchBar.getText().equals("search")) {
+
 			String s = searchBar.getText();
 			prog.emptyMarkedSet();
 			prog.showAllByName(s);
-			
+
 		}
 	}
 

@@ -9,32 +9,32 @@ import javax.swing.JList;
 import model.PlaceCategory;
 import model.TestProgramme;
 
-public class HideCategoryController implements ActionListener{
-	
+public class HideCategoryController implements ActionListener {
+
 	private TestProgramme prog;
 	private JButton b;
 	private JList<String> sideBar;
-	
-	public HideCategoryController(JButton b, JList<String> sideBar, TestProgramme prog){
+
+	public HideCategoryController(JButton b, JList<String> sideBar, TestProgramme prog) {
 		this.prog = prog;
 		this.b = b;
 		this.sideBar = sideBar;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent ave) {
-		if(ave.getSource() == b){
+		if (ave.getSource() == b) {
 			PlaceCategory placeCategory = PlaceCategory.NONE;
-			if(sideBar.getSelectedValue() != null){
+			if (sideBar.getSelectedValue() != null) {
 				String category = sideBar.getSelectedValue().toUpperCase();
 				placeCategory = PlaceCategory.valueOf(category);
 				sideBar.clearSelection();
 			}
-			
+
 			prog.hideAllByCat(placeCategory);
-			
+
 		}
-		
+
 	}
 
 }

@@ -2,43 +2,44 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 
 import javax.swing.JButton;
+import javax.swing.JList;
 
-import model.Place;
+import java.util.LinkedList;
+
 import model.TestProgramme;
 import view.MapBackGround;
 import view.PlaceImage;
 
 public class RemoveMarkedController implements ActionListener {
-	
+
 	private JButton b;
 	private TestProgramme prog;
 	private MapBackGround map;
-	
-	public RemoveMarkedController(JButton b, TestProgramme prog, MapBackGround map){
+	private JList<String> sideBar;
+
+	public RemoveMarkedController(JButton b, TestProgramme prog, MapBackGround map, JList<String> sideBar) {
 		this.b = b;
 		this.prog = prog;
 		this.map = map;
+		this.sideBar = sideBar;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent ave) {
-		
-		if(ave.getSource() == b){
+
+		if (ave.getSource() == b) {
 			LinkedList<PlaceImage> visuals = prog.removeAllMarked();
-			for(PlaceImage pI : visuals){
+			for (PlaceImage pI : visuals) {
 				map.remove(pI);
-				
+
 			}
+			sideBar.clearSelection();
 			map.validate();
 			map.repaint();
 		}
-//		for(Place p : prog.places){			//temp (har bara kollat denna lista)-----tabort! är nu en map!
-//			System.out.println(p);
-//		}
-		
+
 	}
 
 }

@@ -8,15 +8,14 @@ import view.MapBackGround;
 
 import java.awt.event.ActionEvent;
 
-public class NewPlaceController implements ActionListener{
+public class NewPlaceController implements ActionListener {
 	private TestProgramme prog;
 	private JButton b;
-	private JRadioButton [] rbs;
+	private JRadioButton[] rbs;
 	private MapBackGround map;
 	private JList<String> sideBar;
 
-	
-	public NewPlaceController(JButton b, JRadioButton[] rbs, TestProgramme prog, MapBackGround map){
+	public NewPlaceController(JButton b, JRadioButton[] rbs, TestProgramme prog, MapBackGround map) {
 		this.b = b;
 		this.rbs = rbs;
 		this.prog = prog;
@@ -25,25 +24,25 @@ public class NewPlaceController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent ave) {
-		if(ave.getSource() == b){
-			// måste ha nån styr variabel i Map(MapBackGround) som setts true och setts false efter new Place har skapats.
-			
+		
+		
+		if (ave.getSource() == b) {
+			b.setEnabled(false);
 			PlaceCategory placeCategory = PlaceCategory.NONE;
-			if(sideBar.getSelectedValue() != null){
+			if (sideBar.getSelectedValue() != null) {
 				String category = sideBar.getSelectedValue().toUpperCase();
 				placeCategory = PlaceCategory.valueOf(category);
-			} 
-			
-			
-			CenterMouse cm = new CenterMouse(map, prog, rbs, placeCategory);
+			}
+
+			CenterMouse cm = new CenterMouse(map, prog, rbs, placeCategory, b);
 			map.addMouseListener(cm);
-			
+			sideBar.clearSelection();
 			
 		}
 		
 	}
-	
-	public void setSideBar(JList<String> sideBar){
+
+	public void setSideBar(JList<String> sideBar) {
 		this.sideBar = sideBar;
 	}
 }

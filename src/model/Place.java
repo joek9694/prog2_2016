@@ -3,65 +3,56 @@ package model;
 import view.PlaceImage;
 
 public abstract class Place {
-	private PlaceCategory category;	//temporärt
+	private PlaceCategory category;
 	private final Position pos;
 	private String name;
 	private PlaceImage visual;
 	private boolean marked = false;
 	private String subType;
-	
-//	public Place(Position pos, String name){
-//		this.pos = pos;
-//		this.name = name;
-//		category = PlaceCategory.NONE;
-//		visual = new PlaceImage(pos.getX(), pos.getY(), this);
-//	}
-	
-	public Place(Position pos, String name, PlaceCategory category, String subType){
+
+	public Place(Position pos, String name, PlaceCategory category, String subType) {
 		this.pos = pos;
 		this.name = name;
 		this.category = category;
 		this.subType = subType;
 		visual = new PlaceImage(pos.getX(), pos.getY(), this);
 	}
-	
+
 	public abstract String getSpecifics();
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public Position getPos(){
+
+	public Position getPos() {
 		return pos;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		String spec = getSpecifics();
-		if(spec != ""){
-			spec = "," +spec;
+		if (spec != "") {
+			spec = "," + spec;
 		}
-		//type,category,X,Y,Name,getSpecifics();
-		
-		return subType +"," + category +"," +pos.getX() + "," + pos.getY()+ ","+ name + spec;
+
+		return subType + "," + category + "," + pos.getX() + "," + pos.getY() + "," + name + spec;
 	}
-	
-	public PlaceImage getVisual(){
+
+	public PlaceImage getVisual() {
 		return visual;
 	}
-	
-	public PlaceCategory getPlaceCategory(){
+
+	public PlaceCategory getPlaceCategory() {
 		return category;
 	}
 
 	public boolean isMarked() {
 		return marked;
 	}
-	
-	public void setIsMarked(){
+
+	public void setIsMarked() {
 		marked = !marked;
 		visual.repaint();
-		System.out.println("marked? : " +this);			//temp
 	}
-	
+
 }
