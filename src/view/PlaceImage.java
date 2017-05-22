@@ -27,8 +27,8 @@ public class PlaceImage extends JComponent {
 		this.p = p;
 		this.x = x;
 		this.y = y;
-		setBounds(x, y, 30, 30);
 		reCalculateXAndY();
+		setBounds(this.x, this.y, 30, 30);
 		setColorByCategory(p.getPlaceCategory());
 	}
 
@@ -41,7 +41,6 @@ public class PlaceImage extends JComponent {
 	protected void paintComponent(Graphics g) {
 		g.setColor(c);
 		g.fillPolygon(xPoints, yPoints, 3);
-		setBounds(x, y, 30, 30);
 
 		if (p.isMarked()) {
 			g.setColor(Color.RED);

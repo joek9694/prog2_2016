@@ -34,7 +34,8 @@ public class MapBackGround extends JPanel {
 		this.validate();
 		this.repaint();
 	}
-
+	
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(map.getImage(), 0, 0, this);

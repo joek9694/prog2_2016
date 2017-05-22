@@ -99,6 +99,8 @@ public class LoadPlacesController implements ActionListener {
 				PlaceController placeControl = new PlaceController(p, map, prog);
 				place.addMouseListener(placeControl);
 				map.add(place);
+				map.validate();
+				map.repaint();
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -110,8 +112,6 @@ public class LoadPlacesController implements ActionListener {
 			JOptionPane.showMessageDialog(map, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 
 		}
-		map.validate();
-		map.repaint();
 	}
 
 }

@@ -24,9 +24,9 @@ public class MainView extends JFrame {
 		add(centerScroll, BorderLayout.CENTER);
 
 		setupVariables();
-		createMenu();
 		createNorth();
 		createEast();
+		createMenu();
 
 		this.addWindowListener(new ExitController(programme, mapBackGround));
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
