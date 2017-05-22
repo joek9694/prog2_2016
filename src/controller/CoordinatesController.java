@@ -47,8 +47,12 @@ public class CoordinatesController implements ActionListener {
 				try {
 					xVal = Integer.parseInt(x.getText());
 					yVal = Integer.parseInt(y.getText());
-
-					if (xVal >= 0 && xVal < map.getWidth() && yVal >= 0 && yVal < map.getHeight()) {
+					
+//					if ((xVal() >= 0 && e.getX() <= (map.getImageIcon().getIconWidth()))
+//							&& (e.getY() >= 0 && e.getY() <= (map.getImageIcon().getIconHeight())))
+					
+					if (xVal >= 0 && xVal < map.getImageIcon().getIconWidth() 
+							&& yVal >= 0 && yVal < map.getImageIcon().getIconHeight()) {
 						Position p = new Position(xVal, yVal);
 
 						if (prog.places.containsKey(p)) {
