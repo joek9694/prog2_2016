@@ -7,15 +7,15 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import model.PlaceCategory;
-import model.TestProgramme;
+import model.PlacesProgramme;
 
 public class HideCategoryController implements ActionListener {
 
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private JButton b;
 	private JList<String> sideBar;
 
-	public HideCategoryController(JButton b, JList<String> sideBar, TestProgramme prog) {
+	public HideCategoryController(JButton b, JList<String> sideBar, PlacesProgramme prog) {
 		this.prog = prog;
 		this.b = b;
 		this.sideBar = sideBar;

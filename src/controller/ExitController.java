@@ -8,20 +8,20 @@ import java.awt.event.WindowEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 
 public class ExitController extends WindowAdapter implements ActionListener {
 	private JMenuItem exit;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private MapBackGround map;
 
-	public ExitController(TestProgramme prog, MapBackGround map) {
+	public ExitController(PlacesProgramme prog, MapBackGround map) {
 		this.prog = prog;
 		this.map = map;
 	}
 
-	public ExitController(JMenuItem exit, TestProgramme prog, MapBackGround map) {
+	public ExitController(JMenuItem exit, PlacesProgramme prog, MapBackGround map) {
 		this.exit = exit;
 		this.prog = prog;
 		this.map = map;

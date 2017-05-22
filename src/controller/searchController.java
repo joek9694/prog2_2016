@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 
 public class SearchController implements ActionListener {
 	private JButton search;
 	private JTextField searchBar;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 
-	public SearchController(JButton search, JTextField searchBar, TestProgramme prog) {
+	public SearchController(JButton search, JTextField searchBar, PlacesProgramme prog) {
 		this.search = search;
 		this.searchBar = searchBar;
 		this.prog = prog;

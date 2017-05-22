@@ -16,18 +16,18 @@ import model.DescribedPlace;
 import model.NamedPlace;
 import model.PlaceCategory;
 import model.Position;
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 import view.PlaceImage;
 
 public class CenterMouse extends MouseAdapter {
 	private MapBackGround map;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private JRadioButton[] rbs;
 	private final PlaceCategory category;
 	private JButton b;
 
-	public CenterMouse(MapBackGround map, TestProgramme prog, JRadioButton[] rbs, PlaceCategory category, JButton b) {
+	public CenterMouse(MapBackGround map, PlacesProgramme prog, JRadioButton[] rbs, PlaceCategory category, JButton b) {
 		this.map = map;
 		this.prog = prog;
 		this.rbs = rbs;
@@ -52,7 +52,7 @@ public class CenterMouse extends MouseAdapter {
 				&& (e.getY() >= 0 && e.getY() <= (map.getImageIcon().getIconHeight()))) {
 
 			p = new Position(e.getX(), e.getY());
-			if(!prog.places.containsKey(p)){
+			if(!prog.placesContainsKey(p)){
 				
 				for (JRadioButton rb : rbs) {
 					if (rb.isSelected())

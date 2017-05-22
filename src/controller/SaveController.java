@@ -11,14 +11,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 
 public class SaveController implements ActionListener {
 
 	private JMenuItem save;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 
-	public SaveController(JMenuItem save, TestProgramme prog) {
+	public SaveController(JMenuItem save, PlacesProgramme prog) {
 		this.save = save;
 		this.prog = prog;
 	}

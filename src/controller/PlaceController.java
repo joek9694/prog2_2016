@@ -4,15 +4,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import model.Place;
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 
 public class PlaceController extends MouseAdapter {
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private Place p;
 	private MapBackGround map;
 
-	public PlaceController(Place p, MapBackGround map, TestProgramme prog) {
+	public PlaceController(Place p, MapBackGround map, PlacesProgramme prog) {
 		this.prog = prog;
 		this.p = p;
 		this.map = map;

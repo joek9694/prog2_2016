@@ -9,13 +9,13 @@ import view.MapBackGround;
 import java.awt.event.ActionEvent;
 
 public class NewPlaceController implements ActionListener {
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private JButton b;
 	private JRadioButton[] rbs;
 	private MapBackGround map;
 	private JList<String> sideBar;
 
-	public NewPlaceController(JButton b, JRadioButton[] rbs, TestProgramme prog, MapBackGround map) {
+	public NewPlaceController(JButton b, JRadioButton[] rbs, PlacesProgramme prog, MapBackGround map) {
 		this.b = b;
 		this.rbs = rbs;
 		this.prog = prog;

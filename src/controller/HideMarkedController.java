@@ -6,15 +6,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JList;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 
 public class HideMarkedController implements ActionListener {
 
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private JButton b;
 	private JList<String> sideBar;
 
-	public HideMarkedController(JButton b, TestProgramme prog, JList<String> sideBar) {
+	public HideMarkedController(JButton b, PlacesProgramme prog, JList<String> sideBar) {
 		this.prog = prog;
 		this.b = b;
 		this.sideBar = sideBar;

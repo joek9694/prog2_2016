@@ -10,16 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Position;
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 
 public class CoordinatesController implements ActionListener {
 
 	private JButton b;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private MapBackGround map;
 
-	public CoordinatesController(JButton b, TestProgramme prog, MapBackGround map) {
+	public CoordinatesController(JButton b, PlacesProgramme prog, MapBackGround map) {
 		this.b = b;
 		this.prog = prog;
 		this.map = map;
@@ -48,14 +48,11 @@ public class CoordinatesController implements ActionListener {
 					xVal = Integer.parseInt(x.getText());
 					yVal = Integer.parseInt(y.getText());
 					
-//					if ((xVal() >= 0 && e.getX() <= (map.getImageIcon().getIconWidth()))
-//							&& (e.getY() >= 0 && e.getY() <= (map.getImageIcon().getIconHeight())))
-					
 					if (xVal >= 0 && xVal < map.getImageIcon().getIconWidth() 
 							&& yVal >= 0 && yVal < map.getImageIcon().getIconHeight()) {
 						Position p = new Position(xVal, yVal);
 
-						if (prog.places.containsKey(p)) {
+						if (prog.placesContainsKey(p)) {
 							prog.emptyMarkedSet();
 							prog.showPlaceByPos(p);
 						} else {

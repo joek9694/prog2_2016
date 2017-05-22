@@ -10,7 +10,7 @@ public abstract class Place {
 	private boolean marked = false;
 	private String subType;
 
-	public Place(Position pos, String name, PlaceCategory category, String subType) {
+	Place(Position pos, String name, PlaceCategory category, String subType) {
 		this.pos = pos;
 		this.name = name;
 		this.category = category;

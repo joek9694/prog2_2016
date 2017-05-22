@@ -16,14 +16,14 @@ import model.NamedPlace;
 import model.Place;
 import model.PlaceCategory;
 import model.Position;
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 import view.PlaceImage;
 
 public class LoadPlacesController implements ActionListener {
 
 	private JMenuItem loadPlaces;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private MapBackGround map;
 
 	private PlaceCategory cat;
@@ -34,7 +34,7 @@ public class LoadPlacesController implements ActionListener {
 
 	private JFileChooser jfc;
 
-	public LoadPlacesController(JMenuItem loadPlaces, TestProgramme prog, MapBackGround map) {
+	public LoadPlacesController(JMenuItem loadPlaces, PlacesProgramme prog, MapBackGround map) {
 		this.loadPlaces = loadPlaces;
 		this.prog = prog;
 		this.map = map;
@@ -69,7 +69,7 @@ public class LoadPlacesController implements ActionListener {
 			BufferedReader br = new BufferedReader(in);
 			String readLine;
 
-			if (!prog.places.isEmpty()) {
+			if (!prog.placesIsEmpty()) {
 				prog.removeAll();
 				map.removeAll();
 				map.validate();

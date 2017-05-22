@@ -5,13 +5,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import model.PlaceCategory;
-import model.TestProgramme;
+import model.PlacesProgramme;
 
 public class SideBarController implements ListSelectionListener {
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private JList<String> sideBar;
 
-	public SideBarController(JList<String> sideBar, TestProgramme prog) {
+	public SideBarController(JList<String> sideBar, PlacesProgramme prog) {
 		this.sideBar = sideBar;
 		this.prog = prog;
 	}

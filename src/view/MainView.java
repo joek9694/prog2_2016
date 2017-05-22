@@ -1,19 +1,19 @@
 package view;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 import controller.*;
 import java.awt.*;
 import javax.swing.*;
 
 public class MainView extends JFrame {
-	private TestProgramme programme;
+	private PlacesProgramme programme;
 	private JMenu archive;
 	private JButton newPlaceB, hideCategory, hide, search, remove, coordinates;
 	private MapBackGround mapBackGround;
 	private JList<String> sideBar;
 	private NewPlaceController newPlaceController;
 
-	public MainView(TestProgramme programme) {
+	public MainView(PlacesProgramme programme) {
 		super("Inlupp 2");
 		this.programme = programme;
 

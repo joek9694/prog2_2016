@@ -8,18 +8,18 @@ import javax.swing.JList;
 
 import java.util.LinkedList;
 
-import model.TestProgramme;
+import model.PlacesProgramme;
 import view.MapBackGround;
 import view.PlaceImage;
 
 public class RemoveMarkedController implements ActionListener {
 
 	private JButton b;
-	private TestProgramme prog;
+	private PlacesProgramme prog;
 	private MapBackGround map;
 	private JList<String> sideBar;
 
-	public RemoveMarkedController(JButton b, TestProgramme prog, MapBackGround map, JList<String> sideBar) {
+	public RemoveMarkedController(JButton b, PlacesProgramme prog, MapBackGround map, JList<String> sideBar) {
 		this.b = b;
 		this.prog = prog;
 		this.map = map;

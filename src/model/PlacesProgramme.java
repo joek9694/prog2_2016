@@ -9,21 +9,21 @@ import java.util.LinkedList;
 import view.MainView;
 import view.PlaceImage;
 
-public class TestProgramme {
+public class PlacesProgramme {
 
-	public HashMap<Position, Place> places = new HashMap<>();
+	private HashMap<Position, Place> places = new HashMap<>();
 	private HashMap<PlaceCategory, ArrayList<Place>> placesByCat = new HashMap<>();
 	private HashMap<String, LinkedList<Place>> placesByName = new HashMap<>();
 	private HashSet<Place> markedSet = new HashSet<>();
 	private boolean unSavedChanges = false;
 
-	private TestProgramme() {
+	private PlacesProgramme() {
 		createListsForCategories();
 		new MainView(this);
 	}
 
 	public static void main(String[] args) {
-		new TestProgramme();
+		new PlacesProgramme();
 	}
 
 	public boolean hasUnSavedChanges() {
@@ -177,6 +177,14 @@ public class TestProgramme {
 		}
 
 		removeAllMarked();
+	}
+
+	public boolean placesContainsKey(Position p) {
+		return places.containsKey(p);
+	}
+
+	public boolean placesIsEmpty() {
+		return places.isEmpty();
 	}
 
 }
