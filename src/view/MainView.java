@@ -99,7 +99,7 @@ public class MainView extends JFrame {
 		JTextField searchBar = new JTextField("search", 10);
 		north.add(searchBar);
 
-		search.addActionListener(new SearchController(search, searchBar, programme));
+		search.addActionListener(new SearchController(search, searchBar, programme, mapBackGround));
 		north.add(search);
 		hide.addActionListener(new HideMarkedController(hide, programme, sideBar));
 		north.add(hide);

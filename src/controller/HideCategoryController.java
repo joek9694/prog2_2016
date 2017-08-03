@@ -30,9 +30,10 @@ public class HideCategoryController implements ActionListener {
 				placeCategory = PlaceCategory.valueOf(category);
 				sideBar.clearSelection();
 			}
-
-			prog.hideAllByCat(placeCategory);
-
+			
+			if(placeCategory != PlaceCategory.NONE){
+				prog.hideAllByCat(placeCategory);
+			}
 		}
 
 	}

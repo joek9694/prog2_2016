@@ -114,7 +114,7 @@ public class PlacesProgramme {
 	public void showAllByName(String name) {
 		if (placesByName.containsKey(name)) {
 			LinkedList<Place> places = placesByName.get(name);
-
+			
 			for (Place p : places) {
 				p.getVisual().setVisible(true);
 				if (!p.isMarked()) {
@@ -134,12 +134,17 @@ public class PlacesProgramme {
 	}
 
 	public void emptyMarkedSet() {
-		Iterator<Place> markedIterator = markedSet.iterator();
-		while (markedIterator.hasNext()) {
-			Place p = markedIterator.next();
+//		Iterator<Place> markedIterator = markedSet.iterator();
+//		while (markedIterator.hasNext()) {
+//			Place p = markedIterator.next();
+//			p.setIsMarked();
+//			markedIterator.remove();
+//		}
+		for(Place p : markedSet){
 			p.setIsMarked();
-			markedIterator.remove();
 		}
+		
+		markedSet.clear();
 	}
 
 	public void hideAllMarked() {

@@ -7,16 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import model.PlacesProgramme;
+import view.MapBackGround;
 
 public class SearchController implements ActionListener {
 	private JButton search;
 	private JTextField searchBar;
 	private PlacesProgramme prog;
+	private MapBackGround mapBackGround;
 
-	public SearchController(JButton search, JTextField searchBar, PlacesProgramme prog) {
+	public SearchController(JButton search, JTextField searchBar, PlacesProgramme prog, MapBackGround mapBackGround) {
 		this.search = search;
 		this.searchBar = searchBar;
 		this.prog = prog;
+		this.mapBackGround = mapBackGround;
 	}
 
 	@Override
@@ -27,6 +30,7 @@ public class SearchController implements ActionListener {
 			String s = searchBar.getText();
 			prog.emptyMarkedSet();
 			prog.showAllByName(s);
+			mapBackGround.repaint();
 
 		}
 	}
